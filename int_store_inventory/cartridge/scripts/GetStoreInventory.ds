@@ -12,25 +12,66 @@
 *
 * For example:
 *
-*-   @input ExampleIn : String This is a sample comment.
-*-   @output ExampleOut : Number
+*    @output Store : Object
 *
 */
+importPackage( dw.util );
+importPackage( dw.system );
+importPackage( dw.catalog );
+importPackage( dw.net );
+importPackage(dw.object);
 
-
-function execute( args : PipelineDictionary ) : Number
+function execute( pdict : PipelineDictionary ) : Number
 {
 
-  // 1. Get the connection infromation from Sandbox: Site Preference
-  
-  // 2. Apply crypto to the url (Note: the end point of the url should return JSON.)
-  
-  // 3. Get the result json
-  
-  // 4. Convert the json to object
-  
-   
-  
-  
-   return PIPELET_NEXT;
+
+var display="Manas das";
+
+
+    /*This to be used if we are nt able to connect to external server  */
+     var data : Object = {
+			'SiteCode': 123,
+			'VerificationKey': "bbbb",
+			'JpPostalCode': "sss",
+			'ShipFromBaseNo': "sdsasada"
+		};
+		
+		var json = JSON.stringify(data);
+	/*	try{
+	    var log = CustomObjectMgr.getCustomObject(json, 123);
+		}
+		catch(e){
+			Logger.error("error is "+e);
+			
+		}*/
+		
+		 var customObject : CustomObject = CustomObjectMgr.getCustomObject("storeInventory", "inventorySystemEndPoint");
+
+  try {
+		var httpClient : HTTPClient = new HTTPClient();
+		httpClient.setTimeout(5000);
+	
+	    httpClient.open('GET', 'http://49.248.219.235/dwinteract/store/mytest');
+		
+		httpClient.send();
+		
+
+		if (httpClient.statusCode == 200) {
+			
+			
+			pdict.Store =  JSON.parse(httpClient.text);
+			Logger.info("Received Stores Info: "+ httpClient.text);
+			
+			return PIPELET_NEXT;
+		} else {
+			// error handling
+			//return "An error retreiving reviews from Bazaarvoice occured " + httpClient.statusCode;
+			return PIPELET_NEXT;
+		}
+
+	} catch (e) {
+		var e=e;
+		//return "An error retreiving reviews from Bazaarvoice" + e;
+		return PIPELET_NEXT;
+	}
 }

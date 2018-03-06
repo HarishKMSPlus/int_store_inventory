@@ -1,2 +1,8 @@
 <!--- TEMPLATENAME: Sample.isml --->
 Manas Das
+-->   ${pdict.Store.size()}
+
+<isloop items="${pdict.Store}" var="store" status="loopstate">
+ Manas-->${store.storeName}
+</isloop>
+	 

@@ -18,8 +18,9 @@
         <pipelet-node pipelet-name="Script" pipelet-set-identifier="bc_api">
           <config-property key="Transactional" value="false"/>
           <config-property key="OnError" value="PIPELET_ERROR"/>
-          <config-property key="ScriptFile" value="GetConnection.ds"/>
+          <config-property key="ScriptFile" value="GetStoreInventory.ds"/>
           <key-binding alias="null" key="ScriptLog"/>
+          <key-binding alias="Store" key="Store"/>
         </pipelet-node>
         <node-display x="1" y="1"/>
       </node>
