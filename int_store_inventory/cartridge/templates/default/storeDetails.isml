@@ -1,0 +1,6 @@
+<!--- TEMPLATENAME: storeDetails.isml --->
+<h1>customURL:  ${pdict.customURL}</h1> 
+ <h1>Store Inventory Enabled:  ${pdict.StoreInventoryEnabled}</h1>                       	      
+  <h1>userNamePreference:  ${pdict.userNamePreference}</h1>                       	                   
+   <h1>password:  ${pdict.password}</h1>                  			
+   <h1>message:  ${pdict.message}</h1>   
