@@ -37,21 +37,16 @@ var display="Manas das";
 		};
 		
 		var json = JSON.stringify(data);
-	/*	try{
-	    var log = CustomObjectMgr.getCustomObject(json, 123);
-		}
-		catch(e){
-			Logger.error("error is "+e);
-			
-		}*/
+	
 		
-		 var customObject : CustomObject = CustomObjectMgr.getCustomObject("storeInventory", "inventorySystemEndPoint");
+	   	var featureEnabled = dw.system.Site.getCurrent().getCustomPreferenceValue('intStoreInventoryEnabled');
+		var customURL= dw.system.Site.getCurrent().getCustomPreferenceValue('customURL');
 
   try {
 		var httpClient : HTTPClient = new HTTPClient();
 		httpClient.setTimeout(5000);
 	
-	    httpClient.open('GET', 'http://49.248.219.235/dwinteract/store/mytest');
+	    httpClient.open('GET', customURL);
 		
 		httpClient.send();
 		

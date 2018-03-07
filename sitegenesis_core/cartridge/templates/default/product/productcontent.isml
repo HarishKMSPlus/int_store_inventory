@@ -131,6 +131,7 @@
 							<isif condition="${!pdict.Product.master && !pdict.Product.variationGroup}">
 								<span class="value"><isinclude template="product/components/availability"/></span>
 							<iselse/>
+							
 								<div class="availability-novariation">${Resource.msg('product.selectforstock','product',null)}</div>
 							</isif>
 						</div>
@@ -218,7 +219,10 @@
 						}
 					};
 				</isscript>
-				<input type="hidden" name="pid" id="pid" value="${pid}" />
+				<input type="hidden" name="pid" id="pid" value="${pid}" />b
+				
+				<a href="${URLUtils.url('StoreV0-Start','pid',123)}">hit me</a>
+				
 				<isif condition="${!disabledAttr}">
 					<button id="add-to-cart" type="submit" title="${buttonTitle}" value="${buttonTitle}" class="button-fancy-large add-to-cart">${buttonTitle}</button>
 					<isapplepay sku="${pdict.Product.ID}"></isapplepay>
