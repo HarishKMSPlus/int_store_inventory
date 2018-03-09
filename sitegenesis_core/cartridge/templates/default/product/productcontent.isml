@@ -219,11 +219,8 @@
 						}
 					};
 				</isscript>
-				<input type="hidden" name="pid" id="pid" value="${pid}" />b
-				
-				<a href="${URLUtils.url('StoreV0-Start','pid',123)}">hit me</a>
-				
-				<isif condition="${!disabledAttr}">
+					
+			<isif condition="${!disabledAttr}">
 					<button id="add-to-cart" type="submit" title="${buttonTitle}" value="${buttonTitle}" class="button-fancy-large add-to-cart">${buttonTitle}</button>
 					<isapplepay sku="${pdict.Product.ID}"></isapplepay>
 				<iselse>
@@ -248,6 +245,31 @@
 					</isscript>
 					<button id="add-to-cart" type="button" title="${buttonTitleDisabledSelectVariation}" value="${buttonTitleDisabledSelectVariation}" class="button-fancy-large add-to-cart-disabled"<isprint value="${disabledAttr}" encoding="off"/>>${buttonTitle}</button>
 				</isif>
+				<isscript>
+				importScript("int_store_inventory:GetStoreInventoryDetails.ds");
+		
+				let x =getFeatureEnabled();
+				pdict.y=getStoreList();
+		
+				</isscript>
+				
+				<isif condition="${x}">
+					<!-- <button id="availStores" >Stores</button> -->
+					<select  id="select1" onchange="GetItemValue('select1')">
+					  <option value="selectStore" selected>SELECT STORE</option>
+					<isloop iterator = "${pdict.y}" alias = "store">
+                   <option value="${store.storeName}">${store.storeName}</option>
+                  </isloop>
+                     </select>	
+		    	<script>
+                 function GetItemValue(q) {
+                 var e = document.getElementById(q);
+                 var selValue = e.options[e.selectedIndex].text ;
+                document.getElementById("itemValue").innerHTML= "Selected Value: " + selValue ; 
+                  }
+               </script>
+					<div id="itemValue">
+					</isif>
 				</div><!--  end details block -->
 			</fieldset>
 		</form>

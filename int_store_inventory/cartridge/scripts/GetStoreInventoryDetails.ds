@@ -1,0 +1,32 @@
+importPackage( dw.util );
+importPackage( dw.system );
+importPackage( dw.io );
+importPackage( dw.net );
+importPackage(dw.object);
+
+var getFeatureEnabled = function() {
+	var allCustomPreferences = dw.system.Site.getCurrent().getCustomPreferenceValue('intStoreInventoryEnabled'); 
+   	return allCustomPreferences;
+}
+var getStoreList = function() {
+var customURL= dw.system.Site.getCurrent().getCustomPreferenceValue('customURL');
+  try {
+		var httpClient : HTTPClient = new HTTPClient();
+		httpClient.setTimeout(5000);
+	    httpClient.open('GET', customURL);
+		httpClient.send();
+		if (httpClient.statusCode == 200) {	
+			var Store  =  JSON.parse(httpClient.text);
+			//Logger.info("Received Stores Info: "+ httpClient.text);	
+			return Store;
+		} else {
+			// error handling
+			//return "An error retreiving reviews from Bazaarvoice occured " + httpClient.statusCode;
+			return "errorMsg";
+		}
+	} catch (e) {
+		var e=e;
+		//return "An error retreiving reviews from Bazaarvoice" + e;
+		return e;
+	}
+}
