@@ -34,7 +34,7 @@
       </simple-transition>
       <node>
         <interaction-node transaction-required="false">
-          <template buffered="true" dynamic="false" name="Sample"/>
+          <template buffered="true" dynamic="false" name="test"/>
         </interaction-node>
         <node-display x="-1" y="0"/>
       </node>

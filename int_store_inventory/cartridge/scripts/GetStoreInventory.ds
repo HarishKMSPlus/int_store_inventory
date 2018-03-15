@@ -29,58 +29,12 @@ var display="Manas das";
 
 
     /*This to be used if we are nt able to connect to external server  */
-     var data : Object = 
-			[
-  {
-    'storeId': '2',
-    'storeName': 'Croma',
-    'storeType': 'Electronics Stores',
-    'quantity': 130,
-    'productId': '25518769',
-    'address': {
-      'id': '2',
-      'country': 'USA',
-      'state': 'Texas',
-      'city': 'Houston',
-      'street': 'Westheimer Rd',
-      'zipCode': '77056',
-      'addressLine1': '5085 Westheimer Rd'
-    }
-  },
-  {
-    'storeId': '3',
-    'storeName': 'Apollo Pharmacy',
-    'storeType': 'Chemist stores',
-    'quantity': 0,
-    'productId': '25565088',
-    'address': {
-      'id': '3',
-      'country': 'USA',
-      'state': 'FL',
-      'city': 'MIAMI',
-      'street': 'SUITE 204',
-      'zipCode': '33122',
-      'addressLine1': '2801 NW 74TH AVENUE'
-    }
-  },
-  {
-    'storeId': '4',
-    'storeName': 'Francescas Collections',
-    'storeType': 'Garments stores',
-    'quantity': 1,
-    'productId': '25518958',
-    'address': {
-      'id': '4',
-      'country': 'USA',
-      'state': 'NJ',
-      'city': 'SPRINGFIELD',
-      'street': 'UNIT #14',
-      'zipCode': '07081',
-      'addressLine1': '21 FADEM ROAD'
-    }
-  }
-]
-		;
+     var data : Object = {
+			'SiteCode': 123,
+			'VerificationKey': "bbbb",
+			'JpPostalCode': "sss",
+			'ShipFromBaseNo': "sdsasada"
+		};
 		
 		var json = JSON.stringify(data);
 	
@@ -89,10 +43,13 @@ var display="Manas das";
 		var customURL= dw.system.Site.getCurrent().getCustomPreferenceValue('customURL');
 
   try {
-	/*	var httpClient : HTTPClient = new HTTPClient();
+		var httpClient : HTTPClient = new HTTPClient();
 		httpClient.setTimeout(5000);
 	
-		httpClient.open('GET', "https://www.w3schools.com/xml/note.xml");
+	  // httpClient.open('GET', customURL);
+	    var myUrl="http://49.248.219.235/dwinteract/store/product/";
+	    httpClient.open('GET',myUrl+'25518769');
+		
 		httpClient.send();
 		
 
@@ -108,8 +65,6 @@ var display="Manas das";
 			//return "An error retreiving reviews from Bazaarvoice occured " + httpClient.statusCode;
 			return PIPELET_NEXT;
 		}
-*/
-pdict.Store =  JSON.parse(json);
 
 	} catch (e) {
 		var e=e;
