@@ -224,7 +224,7 @@
 			   let storeListText=getStoreList(pid).StoreText;
 			    var qtyList = [];
 				</isscript>
-				<!-- ${pdict.storeList} ${pid} -->
+
 				<span id="AllStoreText"  hidden>${storeListText}</span>
 				 <span id ="storeQty"  hidden>
                  <isloop iterator = "${pdict.storeList}"  var ="store">${store.quantity},</isloop>
@@ -268,19 +268,13 @@
 			<script>
 				function getAvailStores() {
 					var aa = document.getElementById('storeQty').innerHTML.trim().split(',');
-					//       alert(aa[0]);
 					var qtyValue = document.getElementById('Quantity').value;
-					
-					//alert(qtyValue);
 					document.getElementById("select1").style.display = 'block';
 					for (var i = 0; i < aa.length - 1; i++) {
-
-						//  alert(document.getElementById('select1').options[i+1].value+ '           ' + aa[i]);
 						if (new Number(qtyValue) > new Number(aa[i])) {
 							document.getElementById('select1').options[i + 1].disabled = true;
 						} else {
 							document.getElementById('select1').options[i + 1].disabled = false;
-
 						}
 					}
 				}
@@ -290,10 +284,8 @@
 					document.getElementById("storeName").value = selectedStoreValue;
 					var AllStoreText=document.getElementById("AllStoreText").innerHTML;
 				   var AllStoreTextJson =JSON.parse(AllStoreText);
-				  
-			       // alert(AllStoreText);
+				 
 				  for(var z =0 ;z < AllStoreTextJson.length ;z++ ){
-					//  alert("Hi"+AllStoreTextJson[z].storeName);
 					  if(selectedStoreValue==AllStoreTextJson[z].storeName){
 						  document.getElementById("storeID").value =AllStoreTextJson[z].storeId;
 						  document.getElementById("storeInventory").value =AllStoreTextJson[z].quantity;
@@ -314,9 +306,7 @@
 			   <input type="hidden" id="storeAddressLine1" name="storeAddressLine1" />
 				<input type="hidden" id="storeAddressLine2" name="storeAddressLine2" /> 
 				<input type="hidden" id="storeCity" name="storeCity" /> 
-				<input type="hidden" id="storeCountry" name="storeCountry" /> 
-			
-				
+				<input type="hidden" id="storeCountry" name="storeCountry" /> 		
 			</div>
 
 		</div><!--  end details block -->

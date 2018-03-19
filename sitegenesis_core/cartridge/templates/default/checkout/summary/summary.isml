@@ -211,22 +211,17 @@
 			<div class="place-order-totals">
 				<isordertotals p_lineitemctnr="${pdict.Basket}" p_showshipmentinfo="${false}" p_shipmenteditable="${false}" p_totallabel="${Resource.msg('summary.ordertotal','checkout',null)}"/>
 			</div>
-
+<isloop items="${pdict.Basket.getProductLineItems()}" var="PLI">
+	<h4>StoreId:  ${PLI.custom.StoreId}</h4>
+	<h4>StoreName:  ${PLI.custom.StoreName}</h4>
+	<h4>StoreInventory:  ${PLI.custom.StoreInventory}</h4>
+	<h4>StoreAddress1:  ${PLI.custom.StoreAddress1}</h4>
+	<h4>StoreAddress2:  ${PLI.custom.StoreAddress2}</h4>
+	<h4>StoreCity:  ${PLI.custom.StoreCity}</h4>
+	<h4>StoreCountry:  ${PLI.custom.StoreCountryCode}</h4>
+	 </isloop>
 			<form action="${URLUtils.https('COSummary-Submit')}" method="post" class="submit-order">
-<h4>StoreId:  ${pdict.Basket.getProductLineItems()[0].custom.StoreId}</h4>
-<h4>StoreName: ${pdict.Basket.getProductLineItems()[0].custom.StoreName}</h4>
-<h4>StoreInventory: ${pdict.Basket.getProductLineItems()[0].custom.StoreInventory}</h4>
-<h4>StoreAddress1: ${pdict.Basket.getProductLineItems()[0].custom.StoreAddress1}</h4>
-<h4>StoreAddress2: ${pdict.Basket.getProductLineItems()[0].custom.StoreAddress2}</h4>
-<h4>StoreCity: ${pdict.Basket.getProductLineItems()[0].custom.StoreCity}</h4>
-<h4>StoreCountryCode: ${pdict.Basket.getProductLineItems()[0].custom.StoreCountryCode}</h4>
-<!-- <h4>StoreId:  ${pdict.Basket.custom.StoreId}</h4>
-<h4>StoreName: ${pdict.Basket.custom.StoreName}</h4>
-<h4>StoreInventory: ${pdict.Basket.custom.StoreInventory}</h4>
-<h4>StoreAddress1: ${pdict.Basket.custom.StoreAddress1}</h4>
-<h4>StoreAddress2: ${pdict.Basket.custom.StoreAddress2}</h4>
-<h4>StoreCity: ${pdict.Basket.custom.StoreCity}</h4>
-<h4>StoreCountryCode: ${pdict.Basket.custom.StoreCountryCode}</h4> -->
+
 				<fieldset>
 					<div class="form-row">
 						<a class="back-to-cart" href="${URLUtils.url('Cart-Show')}">
