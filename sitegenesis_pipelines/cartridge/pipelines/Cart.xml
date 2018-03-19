@@ -3191,14 +3191,10 @@ CurrentHttpParameterMap.childPids - comma separated list of pids of the bundled 
               </pipelet-node>
               <node-display x="0" y="1"/>
             </node>
-            <simple-transition>
-              <transition-display>
-                <bend-point relative-to="source" x="0" y="1"/>
-              </transition-display>
-            </simple-transition>
+            <simple-transition/>
             <node>
               <decision-node condition-key="Product.productSet" condition-operator="expr"/>
-              <node-display x="0" y="1"/>
+              <node-display x="0" y="2"/>
               <branch basename="b3" source-connector="yes">
                 <transition target-connector="in">
                   <transition-display>
@@ -3261,11 +3257,34 @@ CurrentHttpParameterMap.childPids - comma separated list of pids of the bundled 
                 </segment>
               </branch>
             </node>
-            <simple-transition>
-              <transition-display>
-                <bend-point relative-to="source" x="0" y="1"/>
-              </transition-display>
-            </simple-transition>
+            <simple-transition/>
+            <node>
+              <pipelet-node pipelet-name="Assign" pipelet-set-identifier="bc_api">
+                <config-property key="Transactional" value="true"/>
+                <key-binding alias="CurrentHttpParameterMap.storeID.stringValue" key="From_0"/>
+                <key-binding alias="ProductLineItem.custom.StoreId" key="To_0"/>
+                <key-binding alias="ProductLineItem.custom.StoreName" key="To_1"/>
+                <key-binding alias="ProductLineItem.custom.StoreInventory" key="To_2"/>
+                <key-binding alias="ProductLineItem.custom.StoreAddress1" key="To_3"/>
+                <key-binding alias="CurrentHttpParameterMap.storeAddressLine2.stringValue" key="From_4"/>
+                <key-binding alias="ProductLineItem.custom.StoreAddress2" key="To_4"/>
+                <key-binding alias="CurrentHttpParameterMap.storeCity.stringValue" key="From_5"/>
+                <key-binding alias="ProductLineItem.custom.StoreCity" key="To_5"/>
+                <key-binding alias="CurrentHttpParameterMap.storeCountry.stringValue" key="From_6"/>
+                <key-binding alias="ProductLineItem.custom.StoreCountryCode" key="To_6"/>
+                <key-binding alias="null" key="From_7"/>
+                <key-binding alias="null" key="To_7"/>
+                <key-binding alias="null" key="From_8"/>
+                <key-binding alias="null" key="To_8"/>
+                <key-binding alias="null" key="From_9"/>
+                <key-binding alias="null" key="To_9"/>
+                <key-binding alias="CurrentHttpParameterMap.storeName.stringValue" key="From_1"/>
+                <key-binding alias="CurrentHttpParameterMap.storeInventory.stringValue" key="From_2"/>
+                <key-binding alias="CurrentHttpParameterMap.storeAddressLine1.stringValue" key="From_3"/>
+              </pipelet-node>
+              <node-display x="0" y="1"/>
+            </node>
+            <simple-transition/>
             <node>
               <decision-node condition-key="Product.bundle" condition-operator="expr"/>
               <node-display x="0" y="1"/>
@@ -3330,6 +3349,36 @@ CurrentHttpParameterMap.childPids - comma separated list of pids of the bundled 
     </segment>
   </branch>
   <branch basename="_ANONYMOUS_BRANCH_46">
+    <segment>
+      <node>
+        <pipelet-node pipelet-name="Assign" pipelet-set-identifier="bc_api">
+          <config-property key="Transactional" value="true"/>
+          <key-binding alias="CurrentHttpParameterMap.storeName.stringValue" key="From_0"/>
+          <key-binding alias="Basket.custom.StoreName" key="To_0"/>
+          <key-binding alias="CurrentHttpParameterMap.storeID.stringValue" key="From_1"/>
+          <key-binding alias="Basket.custom.StoreId" key="To_1"/>
+          <key-binding alias="CurrentHttpParameterMap.storeInventory.stringValue" key="From_2"/>
+          <key-binding alias="Basket.custom.StoreInventory" key="To_2"/>
+          <key-binding alias="CurrentHttpParameterMap.storeAddressLine1.stringValue" key="From_3"/>
+          <key-binding alias="Basket.custom.StoreAddress1" key="To_3"/>
+          <key-binding alias="CurrentHttpParameterMap.storeCity.stringValue" key="From_5"/>
+          <key-binding alias="Basket.custom.StoreCity" key="To_5"/>
+          <key-binding alias="CurrentHttpParameterMap.storeCountry.stringValue" key="From_6"/>
+          <key-binding alias="Basket.custom.StoreCountryCode" key="To_6"/>
+          <key-binding alias="null" key="From_7"/>
+          <key-binding alias="null" key="To_7"/>
+          <key-binding alias="null" key="From_8"/>
+          <key-binding alias="null" key="To_8"/>
+          <key-binding alias="null" key="From_9"/>
+          <key-binding alias="null" key="To_9"/>
+          <key-binding alias="CurrentHttpParameterMap.storeAddressLine2.stringValue" key="From_4"/>
+          <key-binding alias="Basket.custom.StoreAddress2" key="To_4"/>
+        </pipelet-node>
+        <node-display x="6" y="52"/>
+      </node>
+    </segment>
+  </branch>
+  <branch basename="_ANONYMOUS_BRANCH_47">
     <segment>
       <node>
         <text-node>

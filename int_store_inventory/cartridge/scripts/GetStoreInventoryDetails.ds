@@ -8,8 +8,10 @@ var getFeatureEnabled = function() {
 	var allCustomPreferences = dw.system.Site.getCurrent().getCustomPreferenceValue('intStoreInventoryEnabled'); 
    	return allCustomPreferences;
 }
-var getStoreList = function() {
-var customURL= dw.system.Site.getCurrent().getCustomPreferenceValue('customURL');
+var getStoreList = function(pid) {
+//var out = response.writer;
+//	out.println("pid" + pid);
+var customURL= dw.system.Site.getCurrent().getCustomPreferenceValue('customURL')+"25502038";
   try {
 		var httpClient : HTTPClient = new HTTPClient();
 		httpClient.setTimeout(5000);
@@ -17,8 +19,8 @@ var customURL= dw.system.Site.getCurrent().getCustomPreferenceValue('customURL')
 		httpClient.send();
 		if (httpClient.statusCode == 200) {	
 			var Store  =  JSON.parse(httpClient.text);
-			//Logger.info("Received Stores Info: "+ httpClient.text);	
-			return Store;
+			//out.println("Received Stores Info: "+ Store);	
+			return {StoreList:Store,StoreText:httpClient.text};
 		} else {
 			// error handling
 			//return "An error retreiving reviews from Bazaarvoice occured " + httpClient.statusCode;

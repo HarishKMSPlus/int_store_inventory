@@ -8,7 +8,36 @@
 	<isset name="store" value="${dw.catalog.StoreMgr.getStore(pdict.CurrentSession.custom.storeId)}" scope="page" />
 	</isif>
 	<isslot id="cart-banner" description="Banner for Cart page"	context="global" />
+<!-- 	${pdict.Basket.getProductLineItems().length} -->
 
+
+	<isloop items="${pdict.Basket.getProductLineItems()}" var="PLI">
+	
+	<h4>StoreId:  ${PLI.custom.StoreId}</h4>
+	<h4>StoreName:  ${PLI.custom.StoreName}</h4>
+	<h4>StoreInventory:  ${PLI.custom.StoreInventory}</h4>
+	<h4>StoreAddress1:  ${PLI.custom.StoreAddress1}</h4>
+	<h4>StoreAddress2:  ${PLI.custom.StoreAddress2}</h4>
+	<h4>StoreCity:  ${PLI.custom.StoreCity}</h4>
+	<h4>StoreCountry:  ${PLI.custom.StoreCountryCode}</h4>
+	 </isloop>
+		<!-- <h4>StoreId:  ${pdict.Basket.getProductLineItems()[i].custom.StoreId}
+	out.println("StoreId: " + ${pdict.Basket.getProductLineItems()[i].custom.StoreId}); -->
+<!-- <h4>StoreId:  ${pdict.Basket.getProductLineItems()[i].custom.StoreId}</h4>
+<h4>StoreName: ${pdict.Basket.getProductLineItems()[i].custom.StoreName}</h4>
+<h4>StoreInventory: ${pdict.Basket.getProductLineItems()[i].custom.StoreInventory}</h4>
+<h4>StoreAddress1: ${pdict.Basket.getProductLineItems()[i].custom.StoreAddress1}</h4>
+<h4>StoreAddress2: ${pdict.Basket.getProductLineItems()[i].custom.StoreAddress2}</h4>
+<h4>StoreCity: ${pdict.Basket.getProductLineItems()[i].custom.StoreCity}</h4>
+<h4>StoreCountryCode: ${pdict.Basket.getProductLineItems()[i].custom.StoreCountryCode}</h4> -->
+
+<!-- <h4>StoreId:  ${pdict.Basket.getProductLineItems()[0].custom.StoreId}</h4>
+<h4>StoreName: ${pdict.Basket.getProductLineItems()[0].custom.StoreName}</h4>
+<h4>StoreInventory: ${pdict.Basket.getProductLineItems()[0].custom.StoreInventory}</h4>
+<h4>StoreAddress1: ${pdict.Basket.getProductLineItems()[0].custom.StoreAddress1}</h4>
+<h4>StoreAddress2: ${pdict.Basket.getProductLineItems()[0].custom.StoreAddress2}</h4>
+<h4>StoreCity: ${pdict.Basket.getProductLineItems()[0].custom.StoreCity}</h4>
+<h4>StoreCountryCode: ${pdict.Basket.getProductLineItems()[0].custom.StoreCountryCode}</h4> -->
 	<isif condition="${pdict.Basket == null || (empty(pdict.Basket.productLineItems) && empty(pdict.Basket.giftCertificateLineItems))}">
 		<div class="cart-empty">
 			<h1>${Resource.msg('cart.cartempty','checkout',null)}</h1>
