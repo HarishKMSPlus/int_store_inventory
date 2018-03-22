@@ -12,26 +12,48 @@
 *
 * For example:
 *
-*-   @input ExampleIn : String This is a sample comment.
-*-   @output ExampleOut : Number
+*  @input order : dw.order.Order This is a sample comment.
+*  
 *
 */
+importPackage( dw.system );
+importPackage( dw.order );
+importPackage( dw.util );
+importPackage( dw.web );
+importPackage( dw.catalog );
+importPackage( dw.io);
+importPackage( dw.net );
+importPackage( dw.object);
 
-
-function execute( args : PipelineDictionary ) : Number
+function execute( pdict : PipelineDictionary ) : Number
 {
-
-    // require scripts or system libs here 
-    // var logger = require('dw/system/Logger');
-
-    // read pipeline dictionary input parameter
-    // ... = args.ExampleIn;
-
-    // insert business logic here
-
-    // write pipeline dictionary output parameter
-
-    // args.ExampleOut = ...
-
+	var updateInventory= dw.system.Site.getCurrent().getCustomPreferenceValue('updateInventory');
+	var out = response.writer;
+	try{
+	var sliArray : Array = new Array();
+	for(var i =0 ; i< pdict.order.allProductLineItems.length ; i++){
+		 var data : Object = {
+			'storeId': pdict.order.allProductLineItems[i].custom.StoreId,
+			'productId': pdict.order.allProductLineItems[i].productID,
+			'storeInventory': pdict.order.allProductLineItems[i].custom.StoreInventory,
+			'quantity': pdict.order.allProductLineItems[i].quantityValue		
+		};
+	sliArray.push(data);
+	}
+	var json = JSON.stringify(sliArray);
+	try{
+   var httpClient : HTTPClient = new HTTPClient();
+  httpClient.setTimeout('10000');
+   httpClient.open("POST" , updateInventory);
+    httpClient.setRequestHeader("Content-Type", "application/json");
+    httpClient.send(json);
    return PIPELET_NEXT;
+   } 
+catch(e){
+	var e1 = e;
+	   return e1;
+}
+} catch(e){
+return e;
+}
 }
