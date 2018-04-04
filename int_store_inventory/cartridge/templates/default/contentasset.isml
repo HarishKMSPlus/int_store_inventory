@@ -1,0 +1,42 @@
+<iscontent type="text/html" charset="UTF-8" compact="true"/>
+<iscomment>
+	This template includes a content asset as remote include. It is used
+	as module template for <iscontentasset> to have a more convenient way
+	to include assets into a page.
+</iscomment>
+<isprint value="${dw.content.ContentMgr.getContent(pdict.aid).custom.body}"  encoding="off" />
+<!-- HIIII
+<br/>
+${dw.content.ContentMgr.getSiteLibrary().getRoot().ID}
+
+<br/>
+LibraryName: ${dw.content.ContentMgr.getLibrary("SiteGenesisSharedLibrary").ID}
+<br/>
+
+${dw.content.ContentMgr.getLibrary("SiteGenesisSharedLibrary").getRoot().getSubFolders().length}
+<br/>
+ParentFolder: ${dw.content.ContentMgr.getLibrary("SiteGenesisSharedLibrary").root.ID}
+<br/>
+SubFolder: ${dw.content.ContentMgr.getLibrary("SiteGenesisSharedLibrary").getRoot().onlineSubFolders[0].ID}
+<br/>
+ContentAsset : ${dw.content.ContentMgr.getFolder("connectToUs").onlineContent[0].ID}
+<br/>
+${dw.content.ContentMgr.getSubFolders("connectToUs").onlineContent[0].ID}
+${dw.content.ContentMgr.getLibrary('SiteGenesisSharedLibrary').getRoot().getSubFolders[0].onlineContent[0].ID}
+<br/>
+<isloop items="${dw.content.ContentMgr.getLibrary('SiteGenesisSharedLibrary').getRoot().getSubFolders()}" var="fold">
+<isprint value="${fold.ID}" />
+<br/>
+</isloop>
+CONTENT ASSETS
+<br/>
+<isloop items="${dw.content.ContentMgr.getSiteLibrary().getRoot().getSubFolders()}" var="CAs">
+<isloop items="${CAs.getContent()}"  var="ac">
+<isprint value="${ac.ID}" />
+<br/>
+</isloop>
+ </isloop> -->
+
+ <br/>
+
+

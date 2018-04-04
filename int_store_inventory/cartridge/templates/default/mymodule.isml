@@ -1,0 +1,10 @@
+<!--- TEMPLATENAME: mymodule.isml --->
+<ismodule template="Mymodule1"
+	name="Mymodule1"
+    attribute="mym"
+/>
+
+<ismodule template="contentasset"
+	name="contentasset"
+	attribute="aid"
+/>

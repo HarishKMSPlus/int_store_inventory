@@ -1,0 +1,24 @@
+/**
+*     @input inputParam1 : Number
+*     @input inputParam2 : Number
+*     @output ProductsId : dw.util.ArrayList
+ *    @output Totalsum: Number
+ *    @output Totaldiff: Number
+*/
+
+var ArrayList = require('dw/util/ArrayList');
+ function execute(pdict){
+ 	var x=pdict.inputParam1;
+ 	var y=pdict.inputParam2;
+ 	var z=x + y;
+ 	var a=sub(x,y);
+ 	pdict.Totalsum= z;
+ 	pdict.Totaldiff = a;
+    pdict.ProductsId=new ArrayList();
+   return PIPELET_NEXT;
+}
+
+function sub(x,y){
+var diff = y-x;
+return diff;
+}

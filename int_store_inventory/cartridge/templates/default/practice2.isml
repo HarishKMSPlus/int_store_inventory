@@ -1,0 +1,11 @@
+<isinclude template="mymodule"/> 
+<isMymodule1 mym="Mymodule1"/>
+<iscontentasset aid="2-day-shipping-popuptest"/>
+<iscontentasset aid="test_contentAsset1"/>
+<br/>
+ <isslot id="test_slot" context="global" description="testingSlot" />
+
+
+
+
+

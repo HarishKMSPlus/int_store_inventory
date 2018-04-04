@@ -1,0 +1,16 @@
+<!--- TEMPLATENAME: pt_practice.isml --->
+<div class="header">
+<h1><b>Splus</b></h1>
+<hr/>
+</div>
+
+<isreplace/>
+<br/>
+
+<div class="footer">
+<hr/>
+<h1><b>@CopyRight</b></h1>
+</div>
+
+
+

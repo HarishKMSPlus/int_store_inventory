@@ -1,0 +1,2 @@
+<!--- TEMPLATENAME: Mymodule1.isml --->
+Custom Tag Name : ${pdict.mym} 
